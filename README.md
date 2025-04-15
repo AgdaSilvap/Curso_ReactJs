@@ -16,6 +16,87 @@ Nesta aula, vamos elevar nossa aplicação para um novo patamar, conectando-a co
 
 Vamos continuar evoluindo nosso estudo de caso da loja de produtos, transformando-a de uma aplicação com dados estáticos para uma aplicação completa conectada a um banco de dados.
 
+## Como Executar o Projeto
+
+Siga os passos abaixo para configurar e rodar a aplicação localmente:
+
+1.  **Clonar o Repositório:**
+    Clone este repositório para sua máquina local.
+    ```bash
+    git clone [URL_DO_SEU_REPOSITORIO]
+    cd [NOME_DA_PASTA_DO_PROJETO]
+    ```
+
+2.  **Instalar Dependências:**
+    Instale todas as dependências necessárias usando npm.
+    ```bash
+    npm install
+    ```
+
+3.  **Configurar o Supabase:**
+    *   Siga os passos na seção "1. Configurando o Supabase" abaixo para criar seu projeto no Supabase.
+    *   **Importante:** Crie a tabela `products` (como descrito na seção 1) e também a tabela `clientes` com as seguintes colunas:
+        *   `id`: bigint (Primary Key, Identity)
+        *   `nome`: text (NOT NULL)
+        *   `data_nascimento`: date
+        *   `email`: text (Unique, NOT NULL)
+        *   `telefone`: text
+        *   `image`: text (URL da foto)
+        *   `created_at`: timestamp with time zone (Default: `now()`)
+    *   Obtenha a URL do seu projeto e a chave de API `anon` (pública) nas configurações de API do seu projeto Supabase.
+
+4.  **Configurar Variáveis de Ambiente:**
+    *   Na raiz do projeto, crie um arquivo chamado `.env`.
+    *   Copie e cole o conteúdo abaixo no arquivo `.env`, substituindo pelos valores do seu projeto Supabase:
+        ```
+        # Cole a senha do seu banco de dados Supabase (opcional para este script, mas bom ter)
+        SUPABASE_PASSWORD="SUA_SENHA_DO_BANCO_DE_DADOS"
+        
+        # Cole a URL do seu projeto Supabase
+        SUPABASE_URL="https://SEU_ID_PROJETO.supabase.co"
+        
+        # Cole a chave ANON (pública) do seu projeto Supabase
+        SUPABASE_API_KEY="SUA_CHAVE_ANON_AQUI"
+        
+        # Repita a URL e a chave ANON com o prefixo VITE_ para o frontend
+        VITE_SUPABASE_URL="https://SEU_ID_PROJETO.supabase.co"
+        VITE_SUPABASE_API_KEY="SUA_CHAVE_ANON_AQUI"
+        ```
+    *   **Certifique-se de adicionar `.env` ao seu arquivo `.gitignore`!**
+
+5.  **Ajustar Políticas de Segurança (RLS) no Supabase:**
+    *   Vá para o painel do Supabase -> Authentication -> Policies.
+    *   Selecione a tabela `clientes`.
+    *   **Habilite o Row Level Security (RLS)** se ainda não estiver habilitado.
+    *   Crie uma nova política (ou modifique a existente) para permitir a operação de `INSERT` pela role `anon`. Você pode usar o SQL Editor para executar:
+        ```sql
+        CREATE POLICY "Permitir insert anonimo para clientes" 
+        ON public.clientes 
+        FOR INSERT 
+        TO anon 
+        WITH CHECK (true);
+        ```
+    *   Faça o mesmo para a tabela `products`, garantindo que as operações `SELECT`, `INSERT`, `UPDATE`, `DELETE` sejam permitidas para `anon` (ou use as templates "Enable read access to everyone", etc.).
+
+6.  **Popular o Banco de Dados (Opcional, mas recomendado):**
+    *   **IMPORTANTE:** Certifique-se de estar na **pasta raiz do projeto** no seu terminal.
+    *   Execute o script para popular a tabela `clientes`:
+        ```bash
+        node src/services/populate-clients.js
+        ```
+    *   (Opcional) Você pode popular a tabela `products` usando o SQL Editor do Supabase (veja Seção 2) ou modificando/criando um script similar ao `populate-clients.js`.
+
+7.  **Rodar a Aplicação:**
+    Inicie o servidor de desenvolvimento Vite.
+    ```bash
+    npm run dev
+    ```
+
+8.  **Acessar no Navegador:**
+    Abra seu navegador e acesse o endereço local fornecido pelo Vite (geralmente `http://localhost:5173` ou similar).
+
+Agora você deve conseguir ver a listagem de produtos e clientes, adicionar produtos ao carrinho (com toast) e navegar entre as páginas com paginação.
+
 ## 1. Configurando o Supabase
 
 O Supabase é uma alternativa open source ao Firebase, fornecendo um conjunto de ferramentas para construir aplicações com PostgreSQL. Ele oferece autenticação, armazenamento, e uma API RESTful automática para interagir com seu banco de dados.

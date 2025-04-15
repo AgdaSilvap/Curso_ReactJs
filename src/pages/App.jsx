@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'; // Importa componentes do router
+import { Toaster, toast } from 'react-hot-toast'; // Importa o Toaster e toast
 
 // Importa os componentes de layout e páginas
 import Footer from "../components/Footer";
@@ -23,6 +24,8 @@ function App() {
     setCartItemCount(prevCount => prevCount + 1);
     // Exibe o produto adicionado no console (apenas para demonstração)
     console.log("Adicionado ao carrinho:", product.title);
+    // Exibe um toast de sucesso
+    toast.success(`${product.title} adicionado ao carrinho!`);
     // Em uma aplicação real, aqui você adicionaria o produto a um array de carrinho, etc.
   };
 
@@ -30,6 +33,7 @@ function App() {
   return (
     <BrowserRouter> {/* Envolve toda a aplicação com o BrowserRouter */}
       <div className="d-flex flex-column min-vh-100"> {/* Mantém o layout flex para o footer */}
+        <Toaster position="top-right" /> {/* Adiciona o Toaster aqui */}
         {/* Header fica fora das Routes para ser exibido em todas as páginas */}
         <Header cartCount={cartItemCount} />
 

@@ -1,10 +1,12 @@
 import { useState } from 'react';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
 import productService from '../services/productService';
 
 const CreateProductPage = () => {
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
   
   // Estado do formulário
   const [product, setProduct] = useState({
@@ -20,12 +22,13 @@ const CreateProductPage = () => {
   // Mutation para criar produto
   const createProductMutation = useMutation({
     mutationFn: productService.createProduct,
-    onSuccess: () => {
-      alert('Produto criado com sucesso!');
+    onSuccess: (newProduct) => {
+      toast.success(`Produto "${newProduct.title}" criado com sucesso!`);
+      queryClient.invalidateQueries(['products']);
       navigate('/produtos');
     },
     onError: (error) => {
-      alert(`Erro ao criar produto: ${error.message}`);
+      toast.error(`Erro ao criar produto: ${error.message}`);
     }
   });
 

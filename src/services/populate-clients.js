@@ -30,7 +30,8 @@ const populateClients = async () => {
     { nome: 'Luciana Costa', data_nascimento: '1997-04-08', email: 'luciana.costa@email.com', telefone: '(91) 98765-6789', image: 'https://randomuser.me/api/portraits/women/17.jpg' },
     { nome: 'Gustavo Almeida', data_nascimento: '1981-09-15', email: 'gustavo.almeida@email.com', telefone: '(91) 97654-0123', image: 'https://randomuser.me/api/portraits/men/18.jpg' },
     { nome: 'Isabela Martins', data_nascimento: '1989-12-03', email: 'isabela.martins@email.com', telefone: '(16) 98765-7890', image: 'https://randomuser.me/api/portraits/women/19.jpg' },
-    { nome: 'Eduardo Castro', data_nascimento: '1985-05-20', email: 'eduardo.castro@email.com', telefone: '(16) 97654-1234', image: 'https://randomuser.me/api/portraits/men/20.jpg' }
+    { nome: 'Eduardo Castro', data_nascimento: '1985-05-20', email: 'eduardo.castro@email.com', telefone: '(16) 97654-1234', image: 'https://randomuser.me/api/portraits/men/20.jpg' },
+    { nome: 'Coçador de Reboco', data_nascimento: '1985-05-20', email: 'coçador.ola@email.com', telefone: '(16) 97654-1234', image: 'https://imgur.com/BuHZSVc' }
   ];
 
   try {
