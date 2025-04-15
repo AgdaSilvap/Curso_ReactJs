@@ -6,6 +6,8 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import HomePage from './HomePage'; // Importa a nova página Home
 import ProductsPage from './ProductsPage'; // Importa a nova página Produtos
+import ClientsPage from './ClientsPage'; // Importa a nova página de Clientes
+import CreateProductPage from './CreateProductPage'; // Importa a página de criação de produtos
 // CardsGrid não é mais usado diretamente aqui, mas sim dentro das páginas
 
 function App() {
@@ -14,15 +16,6 @@ function App() {
   // cartItemCount: a variável que guarda o valor atual do estado
   // setCartItemCount: a função para atualizar o valor do estado
   const [cartItemCount, setCartItemCount] = useState(0);
-
-  const products = [
-    { id: 1, image: "https://picsum.photos/300/200?random=1", title: "Produto 1", description: "Descrição do Produto 1" },
-    { id: 2, image: "https://picsum.photos/300/200?random=2", title: "Produto 2", description: "Descrição do Produto 2" },
-    { id: 3, image: "https://picsum.photos/300/200?random=3", title: "Produto 3", description: "Descrição do Produto 3" },
-    { id: 4, image: "https://picsum.photos/300/200?random=4", title: "Produto 4", description: "Descrição do Produto 4" },
-    { id: 5, image: "https://picsum.photos/300/200?random=5", title: "Produto 5", description: "Descrição do Produto 5" },
-    { id: 6, image: "https://picsum.photos/300/200?random=6", title: "Produto 6", description: "Descrição do Produto 6" },
-  ];
 
   // Função chamada quando o botão "Adicionar ao Carrinho" em um Card é clicado
   const handleAddToCart = (product) => {
@@ -46,12 +39,22 @@ function App() {
             {/* Rota para a Home Page */}
             <Route
               path="/"
-              element={<HomePage products={products} onAddToCart={handleAddToCart} />}
+              element={<HomePage onAddToCart={handleAddToCart} />}
             />
             {/* Rota para a Página de Produtos */}
             <Route
               path="/produtos"
-              element={<ProductsPage products={products} onAddToCart={handleAddToCart} />}
+              element={<ProductsPage onAddToCart={handleAddToCart} />}
+            />
+            {/* Rota para a Página de Novo Produto */}
+            <Route
+              path="/produtos/novo"
+              element={<CreateProductPage />}
+            />
+            {/* Rota para a Página de Clientes */}
+            <Route
+              path="/clientes"
+              element={<ClientsPage />}
             />
             {/* Adicionar outras rotas aqui (ex: /sobre, /contato, /produto/:id) */}
             {/* Rota "catch-all" para página não encontrada (opcional) */}
