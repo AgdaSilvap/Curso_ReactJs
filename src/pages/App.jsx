@@ -6,6 +6,7 @@ import Header from "../components/Header";
 import HomePage from './HomePage';
 import ProductsPage from './ProductsPage';
 import CreateProductPage from './CreateProductPage';
+import ClientPage from './ClientPage';
 
 function App() {
   const [cartItemCount, setCartItemCount] = useState(0);
@@ -38,6 +39,10 @@ function App() {
             <Route
               path="/produtos/novo"
               element={<CreateProductPage />}
+            />
+            <Route
+              path="/clientes"
+              element={<ClientPage />}
             />
           </Routes>
         </main>

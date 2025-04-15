@@ -1,10 +1,6 @@
 // Salve como populate-db.js e execute com Node.js
-import { createClient } from '@supabase/supabase-js';
+import supabase from './supabase';
 
-// Substitua com suas credenciais do Supabase
-const supabaseUrl = 'https://erlqjxhlaahsikbncvfi.supabase.co';
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVybHFqeGhsYWFoc2lrYm5jdmZpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQ3MjY2MzEsImV4cCI6MjA2MDMwMjYzMX0.OpziM9wkLixJBJlNiel5lel3PSocwlaSFBloKpSfMX8';
-const supabase = createClient(supabaseUrl, supabaseKey);
 
 const products = [
   {
@@ -153,6 +149,166 @@ const products = [
   }
 ];
 
+const clients = [
+  {
+    nome: "Ana Carolina Souza",
+    data_nascimento: "1990-04-15",
+    email: "ana.souza@example.com",
+    telefone: "(11) 91234-5678",
+    foto_perfil: "https://picsum.photos/200/200?random=1"
+  },
+  {
+    nome: "Bruno Henrique Silva",
+    data_nascimento: "1988-09-22",
+    email: "bruno.henrique@example.com",
+    telefone: "(21) 99876-5432",
+    foto_perfil: "https://picsum.photos/200/200?random=2"
+  },
+  {
+    nome: "Camila Fernandes Rocha",
+    data_nascimento: "1995-01-10",
+    email: "camila.rocha@example.com",
+    telefone: "(31) 98765-4321",
+    foto_perfil: "https://picsum.photos/200/200?random=3"
+  },
+  {
+    nome: "Daniel Costa Lima",
+    data_nascimento: "1985-12-03",
+    email: "daniel.lima@example.com",
+    telefone: "(51) 93456-7890",
+    foto_perfil: "https://picsum.photos/200/200?random=4"
+  },
+  {
+    nome: "Eduarda Ribeiro",
+    data_nascimento: "1992-07-21",
+    email: "eduarda.ribeiro@example.com",
+    telefone: "(41) 95678-1234",
+    foto_perfil: "https://picsum.photos/200/200?random=5"
+  },
+  {
+    nome: "Felipe Oliveira Martins",
+    data_nascimento: "1989-03-14",
+    email: "felipe.martins@example.com",
+    telefone: "(61) 94567-8901",
+    foto_perfil: "https://picsum.photos/200/200?random=6"
+  },
+  {
+    nome: "Gabriela Lima Alves",
+    data_nascimento: "1993-08-27",
+    email: "gabriela.alves@example.com",
+    telefone: "(71) 97654-3210",
+    foto_perfil: "https://picsum.photos/200/200?random=7"
+  },
+  {
+    nome: "Henrique Barros",
+    data_nascimento: "1987-05-05",
+    email: "henrique.barros@example.com",
+    telefone: "(85) 96543-2109",
+    foto_perfil: "https://picsum.photos/200/200?random=8"
+  },
+  {
+    nome: "Isabela Nunes",
+    data_nascimento: "1991-11-30",
+    email: "isabela.nunes@example.com",
+    telefone: "(95) 92345-6789",
+    foto_perfil: "https://picsum.photos/200/200?random=9"
+  },
+  {
+    nome: "João Pedro Carvalho",
+    data_nascimento: "1996-02-18",
+    email: "joao.carvalho@example.com",
+    telefone: "(81) 91234-9876",
+    foto_perfil: "https://picsum.photos/200/200?random=10"
+  },
+  {
+    nome: "Karla Mendes",
+    data_nascimento: "1986-06-07",
+    email: "karla.mendes@example.com",
+    telefone: "(82) 93456-7890",
+    foto_perfil: "https://picsum.photos/200/200?random=11"
+  },
+  {
+    nome: "Lucas Vieira",
+    data_nascimento: "1994-10-12",
+    email: "lucas.vieira@example.com",
+    telefone: "(84) 99876-1234",
+    foto_perfil: "https://picsum.photos/200/200?random=12"
+  },
+  {
+    nome: "Mariana Teixeira",
+    data_nascimento: "1990-01-01",
+    email: "mariana.teixeira@example.com",
+    telefone: "(92) 96789-6543",
+    foto_perfil: "https://picsum.photos/200/200?random=13"
+  },
+  {
+    nome: "Nelson Duarte",
+    data_nascimento: "1983-03-20",
+    email: "nelson.duarte@example.com",
+    telefone: "(62) 93456-7890",
+    foto_perfil: "https://picsum.photos/200/200?random=14"
+  },
+  {
+    nome: "Olívia Castro",
+    data_nascimento: "1997-09-09",
+    email: "olivia.castro@example.com",
+    telefone: "(98) 97654-1234",
+    foto_perfil: "https://picsum.photos/200/200?random=15"
+  },
+  {
+    nome: "Paulo Sérgio Matos",
+    data_nascimento: "1984-07-17",
+    email: "paulo.matos@example.com",
+    telefone: "(83) 94567-8901",
+    foto_perfil: "https://picsum.photos/200/200?random=16"
+  },
+  {
+    nome: "Renata Moura",
+    data_nascimento: "1992-05-28",
+    email: "renata.moura@example.com",
+    telefone: "(86) 91234-5678",
+    foto_perfil: "https://picsum.photos/200/200?random=17"
+  },
+  {
+    nome: "Samuel Batista",
+    data_nascimento: "1986-11-11",
+    email: "samuel.batista@example.com",
+    telefone: "(91) 99876-5432",
+    foto_perfil: "https://picsum.photos/200/200?random=18"
+  },
+  {
+    nome: "Tatiane Lopes",
+    data_nascimento: "1993-04-04",
+    email: "tatiane.lopes@example.com",
+    telefone: "(96) 98765-4321",
+    foto_perfil: "https://picsum.photos/200/200?random=19"
+  },
+  {
+    nome: "Vinícius Rocha",
+    data_nascimento: "1995-12-25",
+    email: "vinicius.rocha@example.com",
+    telefone: "(93) 97654-3210",
+    foto_perfil: "https://picsum.photos/200/200?random=20"
+  }
+];
+
+
+
+
+async function insertClients() {
+  for (const client of clients) {
+    const { data, error } = await supabase
+      .from('clients')
+      .insert([client]);
+
+    if (error) {
+      console.error('Erro ao inserir cliente:', client.nome, error);
+    } else {
+      console.log('Cliente inserido com sucesso:', client.nome);
+    }
+  }
+}
+
 
 async function insertProducts() {
   for (const product of products) {
@@ -168,6 +324,10 @@ async function insertProducts() {
   }
 }
 
-insertProducts()
-  .then(() => console.log('Todos os produtos foram inseridos!'))
+// insertProducts()
+//   .then(() => console.log('Todos os produtos foram inseridos!'))
+//   .catch(err => console.error('Erro:', err));
+
+insertClients()
+  .then(() => console.log('Todos os clientes foram inseridos!'))
   .catch(err => console.error('Erro:', err));
