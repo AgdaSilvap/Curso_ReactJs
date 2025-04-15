@@ -8,7 +8,6 @@ const ClientsPage = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Função para carregar os clientes
     const loadClients = async () => {
       try {
         setLoading(true);
